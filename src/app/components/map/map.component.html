@@ -102,16 +102,5 @@
     </button>
 
     <div #mapContainer class="map-container"></div>
-
-    <!-- Selected mint info -->
-    @if (cecaSeleccionada(); as ceca) {
-      <div class="ceca-detall-overlay">
-        <button class="overlay-close" (click)="cecaSeleccionada.set(null)">
-          ✕
-        </button>
-        <h3>{{ ceca.nom }}</h3>
-        <p class="overlay-regio">{{ ceca.regio }} · {{ ceca.periode }}</p>
-      </div>
-    }
   </main>
 </div>

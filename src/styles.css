@@ -97,6 +97,12 @@ app-root {
   background: transparent;
 }
 
+/* === Popup container === */
+.numismap-popup {
+  max-width: min(580px, calc(100vw - 2rem)) !important;
+  width: min(580px, calc(100vw - 2rem));
+}
+
 /* === Contingut del popup === */
 .popup-ceca {
   display: flex;
@@ -108,8 +114,7 @@ app-root {
     system-ui,
     -apple-system,
     sans-serif;
-  width: 520px;
-  max-width: 100%;
+  width: min(520px, calc(100vw - 3rem));
   box-sizing: border-box;
 }
 
@@ -132,10 +137,9 @@ app-root {
 
 /* === Popup responsive (mobile) === */
 @media (max-width: 600px) {
-  /* Force the MapLibre popup to nearly full viewport width */
-  .maplibregl-popup {
-    max-width: calc(100vw - 1.5rem) !important;
-    width: calc(100vw - 1.5rem);
+  .numismap-popup {
+    max-width: calc(100vw - 1rem) !important;
+    width: calc(100vw - 1rem);
   }
 
   .numismap-popup .maplibregl-popup-content {
@@ -147,7 +151,7 @@ app-root {
     flex-direction: column;
     width: 100%;
     gap: 0.75rem;
-    padding: 0.85rem 1rem 0.85rem 0.9rem;
+    padding: 0.85rem 0.9rem;
   }
 
   .popup-col-left {

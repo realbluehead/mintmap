@@ -120,7 +120,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
       label.textContent = ceca.nom;
 
       const popup = new maplibregl.Popup({
-        maxWidth: '580px',
+        maxWidth: 'none',
         className: 'numismap-popup',
         offset: 20,
       }).setHTML(this.buildPopupContent(ceca));
@@ -159,6 +159,10 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
     }
     this.cecaSeleccionada.set(ceca);
     this.setMarkerSelected(ceca.id, true);
+    // On narrow screens pan to centre so the popup never overflows an edge
+    if (window.innerWidth < 768) {
+      this.map.easeTo({ center: [ceca.lng, ceca.lat], duration: 250 });
+    }
   }
 
   private buildPopupContent(ceca: Ceca): string {

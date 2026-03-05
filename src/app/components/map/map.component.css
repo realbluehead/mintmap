@@ -1,0 +1,313 @@
+/* === SHELL: Layout principal === */
+.numismap-shell {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  font-family:
+    "Segoe UI",
+    system-ui,
+    -apple-system,
+    sans-serif;
+}
+
+/* === SIDEBAR === */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  min-width: 300px;
+  background: #1a1a2e;
+  color: #e8e8f0;
+  overflow-y: auto;
+  box-shadow: 4px 0 16px rgba(0, 0, 0, 0.4);
+  z-index: 10;
+}
+
+.sidebar-header {
+  padding: 1.25rem 1rem;
+  background: linear-gradient(135deg, #16213e, #0f3460);
+  border-bottom: 2px solid #c9a84c;
+}
+
+.logo-block {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo-icon {
+  font-size: 2rem;
+  filter: drop-shadow(0 2px 4px rgba(201, 168, 76, 0.5));
+}
+
+.app-title {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #c9a84c;
+  letter-spacing: 1px;
+}
+
+.app-subtitle {
+  margin: 0;
+  font-size: 0.75rem;
+  color: #a0a8c0;
+  letter-spacing: 0.5px;
+}
+
+/* === SECCIONS SIDEBAR === */
+.sidebar-section {
+  padding: 1rem;
+  border-bottom: 1px solid #2a2a4e;
+}
+
+.section-title {
+  margin: 0 0 0.6rem 0;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #c9a84c;
+}
+
+/* === FILTRES === */
+.filtre-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.filtre-btn {
+  padding: 0.3rem 0.75rem;
+  border: 1px solid #3a3a6a;
+  border-radius: 20px;
+  background: transparent;
+  color: #b0b8d0;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filtre-btn:hover {
+  border-color: #c9a84c;
+  color: #c9a84c;
+}
+
+.filtre-btn.actiu {
+  background: #c9a84c;
+  border-color: #c9a84c;
+  color: #1a1a2e;
+  font-weight: 700;
+}
+
+/* === COMPTADOR === */
+.comptador {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: #0f3460;
+  border-bottom: 1px solid #2a2a4e;
+}
+
+.comptador-num {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #c9a84c;
+  line-height: 1;
+}
+
+.comptador-label {
+  font-size: 0.8rem;
+  color: #a0a8c0;
+}
+
+/* === LLISTA CEQUES === */
+.ceques-llista-section {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.ceques-llista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.ceca-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.6rem 0.75rem;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.ceca-item:hover {
+  background: #2a2a4e;
+  border-color: #3a3a6e;
+}
+
+.ceca-item.seleccionada {
+  background: linear-gradient(135deg, #2a2a4e, #1e3a6e);
+  border-color: #c9a84c;
+}
+
+.ceca-item-nom {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #e8e8f0;
+}
+
+.ceca-item-regio {
+  font-size: 0.7rem;
+  color: #c9a84c;
+}
+
+.ceca-item-periode {
+  font-size: 0.65rem;
+  color: #7080a0;
+  font-style: italic;
+}
+
+/* === FOOTER SIDEBAR === */
+.sidebar-footer {
+  padding: 1rem;
+  border-top: 1px solid #2a2a4e;
+}
+
+.btn-reset {
+  width: 100%;
+  padding: 0.6rem 1rem;
+  background: linear-gradient(135deg, #0f3460, #16213e);
+  border: 1px solid #c9a84c;
+  border-radius: 8px;
+  color: #c9a84c;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-reset:hover {
+  background: linear-gradient(135deg, #c9a84c, #a8882c);
+  color: #1a1a2e;
+  border-color: transparent;
+}
+
+/* === MAPA === */
+.map-wrapper {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+}
+
+.map-container {
+  width: 100%;
+  height: 100%;
+}
+
+/* === OVERLAY CECA SELECCIONADA === */
+.ceca-detall-overlay {
+  position: absolute;
+  bottom: 2rem;
+  right: 1rem;
+  background: rgba(26, 26, 46, 0.95);
+  border: 1px solid #c9a84c;
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  min-width: 220px;
+  max-width: 320px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  color: #e8e8f0;
+  z-index: 500;
+  animation: slideIn 0.25s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ceca-detall-overlay h3 {
+  margin: 0 0 0.3rem 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #c9a84c;
+  padding-right: 1.5rem;
+}
+
+.overlay-regio {
+  margin: 0;
+  font-size: 0.75rem;
+  color: #a0a8c0;
+}
+
+.overlay-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.6rem;
+  background: none;
+  border: none;
+  color: #7080a0;
+  cursor: pointer;
+  font-size: 0.9rem;
+  padding: 0.2rem;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.overlay-close:hover {
+  color: #c9a84c;
+}
+
+/* === SCROLLBAR PERSONALITZAT === */
+.sidebar::-webkit-scrollbar,
+.ceques-llista-section::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sidebar::-webkit-scrollbar-track,
+.ceques-llista-section::-webkit-scrollbar-track {
+  background: #1a1a2e;
+}
+
+.sidebar::-webkit-scrollbar-thumb,
+.ceques-llista-section::-webkit-scrollbar-thumb {
+  background: #3a3a6a;
+  border-radius: 2px;
+}
+
+/* === RESPONSIVE: mòbil === */
+@media (max-width: 768px) {
+  .numismap-shell {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    min-width: 0;
+    max-height: 40vh;
+  }
+
+  .ceques-llista-section {
+    max-height: 150px;
+  }
+}

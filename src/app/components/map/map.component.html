@@ -1,0 +1,95 @@
+<div class="numismap-shell">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <header class="sidebar-header">
+      <div class="logo-block">
+        <span class="logo-icon">🪙</span>
+        <div>
+          <h1 class="app-title">NumisMap</h1>
+          <p class="app-subtitle">Ancient World Mints</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- Map style selector -->
+    <section class="sidebar-section">
+      <h2 class="section-title">Map Style</h2>
+      <div class="filtre-list">
+        @for (estil of STYLES; track estil.id) {
+          <button
+            class="filtre-btn"
+            [class.actiu]="estilActual() === estil.id"
+            (click)="canviarEstil(estil.id)"
+          >
+            {{ estil.label }}
+          </button>
+        }
+      </div>
+    </section>
+
+    <!-- Filter by region -->
+    <section class="sidebar-section">
+      <h2 class="section-title">Filter by Region</h2>
+      <div class="filtre-list">
+        @for (regio of regionsDisponibles(); track regio) {
+          <button
+            class="filtre-btn"
+            [class.actiu]="regioFiltre() === regio"
+            (click)="onFiltreCanviat(regio)"
+          >
+            {{ regio }}
+          </button>
+        }
+      </div>
+    </section>
+
+    <!-- Counter -->
+    <div class="comptador">
+      <span class="comptador-num">{{ totalVisible() }}</span>
+      <span class="comptador-label">mints visible</span>
+    </div>
+
+    <!-- Mint list -->
+    <section class="sidebar-section ceques-llista-section">
+      <h2 class="section-title">Mint List</h2>
+      <ul class="ceques-llista">
+        @for (ceca of ceques(); track ceca.id) {
+          @if (regioFiltre() === "All" || ceca.regio === regioFiltre()) {
+            <li
+              class="ceca-item"
+              [class.seleccionada]="cecaSeleccionada()?.id === ceca.id"
+              (click)="onNavegaCeca(ceca)"
+            >
+              <span class="ceca-item-nom">{{ ceca.nom }}</span>
+              <span class="ceca-item-regio">{{ ceca.regio }}</span>
+              <span class="ceca-item-periode">{{ ceca.periode }}</span>
+            </li>
+          }
+        }
+      </ul>
+    </section>
+
+    <!-- Botó reset -->
+    <footer class="sidebar-footer">
+      <button class="btn-reset" (click)="onCentrarMapa()">
+        <span>🗺️</span> Center Map
+      </button>
+    </footer>
+  </aside>
+
+  <!-- MAP -->
+  <main class="map-wrapper">
+    <div #mapContainer class="map-container"></div>
+
+    <!-- Selected mint info -->
+    @if (cecaSeleccionada(); as ceca) {
+      <div class="ceca-detall-overlay">
+        <button class="overlay-close" (click)="cecaSeleccionada.set(null)">
+          ✕
+        </button>
+        <h3>{{ ceca.nom }}</h3>
+        <p class="overlay-regio">{{ ceca.regio }} · {{ ceca.periode }}</p>
+      </div>
+    }
+  </main>
+</div>

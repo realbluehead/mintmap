@@ -124,6 +124,8 @@ app-root {
   flex: 1;
   border-left: 1px solid #2a2a4e;
   padding-left: 1rem;
+  padding-top: 0.2rem;
+  padding-right: 2rem;
   display: flex;
   align-items: flex-start;
 }

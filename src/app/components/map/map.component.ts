@@ -72,6 +72,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
       style: STYLE_ROMAN,
       center: [28, 39],
       zoom: 5,
+      attributionControl: false,
     });
 
     this.map.addControl(new maplibregl.NavigationControl(), 'top-right');
@@ -160,10 +161,6 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private buildPopupContent(ceca: Ceca): string {
-    const monedesHtml = ceca.monedes
-      .map((m) => `<span class="badge-moneda">${m}</span>`)
-      .join('');
-
     return `
       <div class="popup-ceca">
         <div class="popup-col-left">
@@ -174,10 +171,6 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
           <div class="popup-periode">
             <span class="popup-icon">📅</span>
             <strong>${ceca.periode}</strong>
-          </div>
-          <div class="popup-monedes">
-            <p class="popup-monedes-titol">Documented coins:</p>
-            <div class="badges-container">${monedesHtml}</div>
           </div>
         </div>
         <div class="popup-col-right">

@@ -130,6 +130,41 @@ app-root {
   align-items: flex-start;
 }
 
+/* === Popup responsive (mobile) === */
+@media (max-width: 600px) {
+  /* Force the MapLibre popup to nearly full viewport width */
+  .maplibregl-popup {
+    max-width: calc(100vw - 1.5rem) !important;
+    width: calc(100vw - 1.5rem);
+  }
+
+  .numismap-popup .maplibregl-popup-content {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .popup-ceca {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.75rem;
+    padding: 0.85rem 1rem 0.85rem 0.9rem;
+  }
+
+  .popup-col-left {
+    flex: none;
+    width: 100%;
+  }
+
+  .popup-col-right {
+    border-left: none;
+    border-top: 1px solid #2a2a4e;
+    padding-left: 0;
+    padding-top: 0.75rem;
+    padding-right: 2rem;
+    width: 100%;
+  }
+}
+
 .popup-header {
   margin-bottom: 0;
 }

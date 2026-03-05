@@ -1,6 +1,11 @@
 <div class="numismap-shell">
+  <!-- Mobile backdrop -->
+  @if (sidebarOpen()) {
+    <div class="sidebar-backdrop" (click)="sidebarOpen.set(false)"></div>
+  }
+
   <!-- SIDEBAR -->
-  <aside class="sidebar">
+  <aside class="sidebar" [class.open]="sidebarOpen()">
     <header class="sidebar-header">
       <div class="logo-block">
         <span class="logo-icon">🪙</span>
@@ -9,6 +14,14 @@
           <p class="app-subtitle">Ancient World Mints</p>
         </div>
       </div>
+      <!-- Close button (mobile only) -->
+      <button
+        class="sidebar-close-btn"
+        (click)="sidebarOpen.set(false)"
+        aria-label="Close menu"
+      >
+        ✕
+      </button>
     </header>
 
     <!-- Map style selector -->
@@ -69,7 +82,7 @@
       </ul>
     </section>
 
-    <!-- Botó reset -->
+    <!-- Reset button -->
     <footer class="sidebar-footer">
       <button class="btn-reset" (click)="onCentrarMapa()">
         <span>🗺️</span> Center Map
@@ -79,6 +92,15 @@
 
   <!-- MAP -->
   <main class="map-wrapper">
+    <!-- Hamburger button (mobile only) -->
+    <button
+      class="sidebar-toggle-btn"
+      (click)="sidebarOpen.set(true)"
+      aria-label="Open menu"
+    >
+      ☰
+    </button>
+
     <div #mapContainer class="map-container"></div>
 
     <!-- Selected mint info -->

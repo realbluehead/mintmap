@@ -42,6 +42,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
   regionsDisponibles = signal<string[]>([]);
   totalVisible = signal<number>(0);
   estilActual = signal<string>(STYLE_ROMAN);
+  sidebarOpen = signal<boolean>(false);
 
   readonly STYLES = [
     { id: STYLE_ROMAN, label: '🏛️ Ancient Roman Map' },
@@ -206,6 +207,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   onNavegaCeca(ceca: Ceca): void {
+    this.sidebarOpen.set(false);
     this.map.flyTo({ center: [ceca.lng, ceca.lat], zoom: 9 });
     this.selectMarker(ceca);
     setTimeout(() => {
